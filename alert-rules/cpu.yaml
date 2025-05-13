@@ -4,10 +4,14 @@ groups:
     team: myteam
   rules:
   - alert: CPUUtlisationAlert
-    expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 0.1
+    expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 75 # Query if more than 75 percentage. google for queries ; you will get them
     for: 1m
     keep_firing_for: 15m
     labels:
       severity: critical
     annotations:
       summary: CPUUtlisation is High
+
+# keep_firing_for: 15m means 
+#basically it wont just check once [ for: 1m ; this means 1 min vargu 75% ginta jasti idre red alert kalsutte. kadme aadre matte green alert kalsutte ]. but if you enable keep_firing_for: 15m;  it waits for 15 mins ;  if the issues is not solved i mean if it comes again within 15 mins , you wont get mail as " issue solved " thats it. 
+

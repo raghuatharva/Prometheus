@@ -4,7 +4,7 @@ groups:
     team: myteam
   rules:
   - alert: InstanceDownAlert
-    expr: up < 1
+    expr: up < 1 # Query
     for: 1m
     keep_firing_for: 15m
     labels:

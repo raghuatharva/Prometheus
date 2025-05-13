@@ -3,15 +3,15 @@ route:
   group_wait: 30s
   group_interval: 5m
   repeat_interval: 1h
-  receiver: 'ses'
+  receiver: 'ses' #AmazonSES or any name
 receivers:
   - name: 'ses'
     email_configs:
-      - smarthost: 'email-smtp.us-east-1.amazonaws.com:587'
-        auth_username: 'your-username'
+      - smarthost: 'email-smtp.us-east-1.amazonaws.com:587' #SES ENDPOINT
+        auth_username: 'your-username' #SMTP USERName
         auth_password: "your-password"
-        from: 'your-from-address'
-        to: 'your-to-address'
+        from: 'raghuatharva95@gmail.com' #alerts come from this account 
+        to: 'raghu.rohan95@gmail.com'   # to this account
         headers:
           subject: 'Prometheus Mail Alerts'
 inhibit_rules:
